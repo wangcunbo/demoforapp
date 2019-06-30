@@ -8,3 +8,10 @@
 （2）html中引用组件时带传值，<app-hero-detail [hero]="selectedHero" [id]="id"></app-hero-detail>；
 （3）在子组件ts中定义Input，@Input() id;
 （4）在html中正常使用即可，<div>id: {{id}}</div>。
+
+3、路由
+（1）生成路由组件ng generate module app-routing --flat --module=app
+（2）删除 @NgModule.declarations 并删除对 CommonModule 的引用，添加一个 @NgModule.exports 数组，其中放上 RouterModule. 导出 RouterModule 让路由器的相关指令可以在 AppModule 中的组件中使用;
+（3）把 RouterModule 添加到 @NgModule.imports 数组中，并用 routes 来配置它.imports: [ RouterModule.forRoot(routes) ];
+（4）配置路由，
+（5）html中添加路由出口<router-outlet></router-outlet>
