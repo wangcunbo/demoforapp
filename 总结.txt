@@ -1,0 +1,10 @@
+1、服务注入
+（1）import { HeroService } from '../hero.service';
+（2）服务注入的时候需要通过  constructor(private heroService: HeroService)的方式实现初始化；
+（3）然后在ngOnInit() 调用服务所需要的方法，并将返回值赋值给本组件中的变量。
+
+2、组件之间相互传值
+（1）父组件ts中定义变量，id;
+（2）html中引用组件时带传值，<app-hero-detail [hero]="selectedHero" [id]="id"></app-hero-detail>；
+（3）在子组件ts中定义Input，@Input() id;
+（4）在html中正常使用即可，<div>id: {{id}}</div>。

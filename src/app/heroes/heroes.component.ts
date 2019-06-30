@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-heroes',
@@ -12,13 +13,26 @@ export class HeroesComponent implements OnInit {
     id:1,
     name:'Windstrom'
   };
-  heroes = HEROES;
+  id;
+  heroes: Hero[];
   selectedHero: Hero;
-  constructor() { }
+  //在此处注入服务
+  constructor(private heroService: HeroService,
+    private messageService: MessageService) { 
+  }
 
+  //在此处调用初始化方法，获取服务里面提供的数据。
+  //此处注意调用的是一个方法
   ngOnInit() {
+    this.getHeroes();
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    this.id = "111";
+    this.messageService.add("选择一个")
+  }
+  getHeroes(): void {
+    //this.heroes=this.heroService.getHeroes；
+    this.heroService.getHeroes().subscribe(heroes => this.heroes=heroes);
   }
 }
