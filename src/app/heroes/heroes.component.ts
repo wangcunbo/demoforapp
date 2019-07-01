@@ -9,13 +9,13 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  hero:Hero = {
-    id:1,
-    name:'Windstrom'
-  };
-  id;
+  // hero:Hero = {
+  //   id:1,
+  //   name:'Windstrom'
+  // };
+  // id;
   heroes: Hero[];
-  selectedHero: Hero;
+  // selectedHero: Hero;
   //在此处注入服务
   constructor(private heroService: HeroService,
     private messageService: MessageService) { 
@@ -26,11 +26,11 @@ export class HeroesComponent implements OnInit {
   ngOnInit() {
     this.getHeroes();
   }
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.id = "111";
-    this.messageService.add("选择一个")
-  }
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  //   this.id = "111";
+  //   this.messageService.add("选择一个")
+  // }
   getHeroes(): void {
     //this.heroes=this.heroService.getHeroes；
     this.heroService.getHeroes().subscribe(heroes => this.heroes=heroes);
